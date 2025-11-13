@@ -4,6 +4,29 @@ This guide shows you how to test the newly implemented `create_pipeline` and `cr
 
 ## Prerequisites
 
+### Build the Binary
+
+**For Linux/Mac:**
+```bash
+go build -o cmd/harness-mcp-server/harness-mcp-server ./cmd/harness-mcp-server
+```
+
+**For Windows (PowerShell):**
+```powershell
+.\build-windows.ps1
+# OR manually:
+go build -o cmd\harness-mcp-server\harness-mcp-server.exe .\cmd\harness-mcp-server
+```
+
+**For Windows (Command Prompt):**
+```cmd
+build-windows.bat
+REM OR manually:
+go build -o cmd\harness-mcp-server\harness-mcp-server.exe .\cmd\harness-mcp-server
+```
+
+### Harness Credentials
+
 You need valid Harness credentials:
 - API Key
 - Account ID
@@ -14,6 +37,7 @@ You need valid Harness credentials:
 
 The MCP Inspector provides an interactive web UI for testing:
 
+**For Linux/Mac/Git Bash:**
 ```bash
 # Set your credentials
 export HARNESS_API_KEY='your-harness-api-key'
@@ -26,6 +50,36 @@ export HARNESS_MODULES='CORE,CD'
 
 # Launch MCP Inspector
 npx @modelcontextprotocol/inspector ./cmd/harness-mcp-server/harness-mcp-server stdio
+```
+
+**For Windows (PowerShell):**
+```powershell
+# Set your credentials
+$env:HARNESS_API_KEY='your-harness-api-key'
+$env:HARNESS_ACCOUNT_ID='your-account-id'
+$env:HARNESS_DEFAULT_ORG_ID='your-org-id'
+$env:HARNESS_DEFAULT_PROJECT_ID='your-project-id'
+
+# Enable both CORE and CD modules (CD module has create_service)
+$env:HARNESS_MODULES='CORE,CD'
+
+# Launch MCP Inspector
+npx @modelcontextprotocol/inspector cmd\harness-mcp-server\harness-mcp-server.exe stdio
+```
+
+**For Windows (Command Prompt):**
+```cmd
+REM Set your credentials
+set HARNESS_API_KEY=your-harness-api-key
+set HARNESS_ACCOUNT_ID=your-account-id
+set HARNESS_DEFAULT_ORG_ID=your-org-id
+set HARNESS_DEFAULT_PROJECT_ID=your-project-id
+
+REM Enable both CORE and CD modules (CD module has create_service)
+set HARNESS_MODULES=CORE,CD
+
+REM Launch MCP Inspector
+npx @modelcontextprotocol/inspector cmd\harness-mcp-server\harness-mcp-server.exe stdio
 ```
 
 This will:
