@@ -48,8 +48,8 @@ export HARNESS_DEFAULT_PROJECT_ID='your-project-id'
 # Enable both CORE and CD modules (CD module has create_service)
 export HARNESS_MODULES='CORE,CD'
 
-# Launch MCP Inspector
-npx @modelcontextprotocol/inspector ./cmd/harness-mcp-server/harness-mcp-server stdio
+# Launch MCP Inspector (with log file to avoid JSON-RPC conflicts)
+npx @modelcontextprotocol/inspector ./cmd/harness-mcp-server/harness-mcp-server stdio --log-file harness-mcp.log
 ```
 
 **For Windows (PowerShell):**
@@ -63,8 +63,8 @@ $env:HARNESS_DEFAULT_PROJECT_ID='your-project-id'
 # Enable both CORE and CD modules (CD module has create_service)
 $env:HARNESS_MODULES='CORE,CD'
 
-# Launch MCP Inspector
-npx @modelcontextprotocol/inspector cmd\harness-mcp-server\harness-mcp-server.exe stdio
+# Launch MCP Inspector (with log file to avoid JSON-RPC conflicts)
+npx @modelcontextprotocol/inspector cmd\harness-mcp-server\harness-mcp-server.exe stdio --log-file harness-mcp.log
 ```
 
 **For Windows (Command Prompt):**
